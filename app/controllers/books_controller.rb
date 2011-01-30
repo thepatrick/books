@@ -3,7 +3,7 @@ class BooksController < ApplicationController
   before_filter :require_user, :except => :index
   
   respond_to :html, :json
-  respond_to :html, :json, :rss, :only => :index
+  respond_to :rss, :only => :index
   
   # GET /books
   # GET /books.json
@@ -20,7 +20,8 @@ class BooksController < ApplicationController
   # GET /books/new
   # GET /books/new.json
   def new
-    respond_with(@book = Book.new)
+    @book = Book.new
+    respond_with(@book)
   end
 
   # GET /books/1/edit
