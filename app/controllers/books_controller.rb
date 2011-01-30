@@ -2,74 +2,62 @@ class BooksController < ApplicationController
   
   before_filter :require_user, :except => :index
   
+  respond_to :html, :json
+  respond_to :html, :json, :rss, :only => :index
+  
   # GET /books
-  # GET /books.xml
+  # GET /books.json
   def index
-    @books = Book.finished.order('ended DESC').all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @books }
-    end
+    respond_with(@books = Book.finished.order('ended DESC').all)
   end
 
   # GET /books/1
-  # GET /books/1.xml
+  # GET /books/1.json
   def show
-    @book = Book.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @book }
-    end
+    respond_with(@book = Book.find(params[:id]))
   end
 
   # GET /books/new
-  # GET /books/new.xml
+  # GET /books/new.json
   def new
-    @book = Book.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @book }
-    end
+    respond_with(@book = Book.new)
   end
 
   # GET /books/1/edit
   def edit
-    @book = Book.find(params[:id])
+    respond_with(@book = Book.find(params[:id]))
   end
 
   # POST /books
-  # POST /books.xml
+  # POST /books.json
   def create
     @book = Book.new(params[:book])
-
-    respond_to do |format|
-      if @book.save
-        format.html { redirect_to(@book, :notice => 'Book was successfully created.') }
-        format.xml  { render :xml => @book, :status => :created, :location => @book }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @book.errors, :status => :unprocessable_entity }
+    if @book.save
+      respond_with @book, :status => :created, :location => @book
+    else
+      respond_with @book.errors, :status => :unprocessable_entity do |format|
+        format.html { render :action => :new }
       end
     end
   end
 
   # PUT /books/1
-  # PUT /books/1.xml
+  # PUT /books/1.json
   def update
     @book = Book.find(params[:id])
 
-    respond_to do |format|
-      if @book.update_attributes(params[:book])
-        format.html { redirect_to(@book, :notice => 'Book was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @book.errors, :status => :unprocessable_entity }
+    if @book.update_attributes(params[:book])
+      respond_with @book, :location => @book do |format|
+        format.json do
+          head :ok
+        end
+      end 
+    else
+      respond_with @book.errors, :status => :unprocessable_entity do |format|
+        format.html { render :action => :edit }
       end
     end
+      
   end
 
   # DELETE /books/1

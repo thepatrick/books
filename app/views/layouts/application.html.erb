@@ -21,11 +21,19 @@
     <script src="http://cdn.m.ac.nz/2011/yearofthebook/javascripts/rails.js?1296361286" type="text/javascript"></script>
     <% end %>
     <%= csrf_meta_tag %>
+    
+    <% if @book %>
+    <link rel="canonical" href="http://books.thepatrick.com.au<%= book_path(@book) %>" />
+    <% else %>
+    <link rel="canonical" href="http://books.thepatrick.com.au/" />
+    <% end %>
 		
 		<script type="text/javascript" src="http://use.typekit.com/urd7xcf.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-        <link rel="stylesheet" href="http://cdn.m.ac.nz/2010/thepatrick.com.au/v2.css" type="text/css" media="screen" title="no title" charset="utf-8">
-    	</head>
+    <link rel="stylesheet" href="http://cdn.m.ac.nz/2010/thepatrick.com.au/v2.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <link rel="alternate" type="application/
+    respond_to :html, :json, :rss+xml" title="Year of the Book - RSS" href="<%= books_url(:format => :rss) %>" />
+  </head>
   <body>
     <% if current_user %>
     <div id="top">
