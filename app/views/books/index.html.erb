@@ -1,0 +1,15 @@
+<% @books.each do |book| %>
+      <div class="post text">
+					<a href="http://myio.com.au/post/2683504630/site-update" class="icon"></a>
+					<h2 class="title">
+					  <%= link_to book.title, book_path(book) %></h2>
+          <!-- <div class="content"></div> -->
+				<p><small>
+				    By <%= book.author %>, <%= book.kind.ebook ? "on" : "in" %> <%= book.kind.title %> · 
+				    Finished <%= book.ended.strftime("%B %e, %Y") %>
+						
+						
+				</small></p>
+			</div>
+<% end %>
+

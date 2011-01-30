@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  author: MyString
+  kind_id: 1
+  started: 2011-01-30
+  ended: 2011-01-30
+
+two:
+  title: MyString
+  author: MyString
+  kind_id: 1
+  started: 2011-01-30
+  ended: 2011-01-30

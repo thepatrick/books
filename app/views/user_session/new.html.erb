@@ -1,0 +1,18 @@
+<h3>Login</h3>
+ 
+<%= form_for @user_session, :url => {:action => "create"} do |f| %>
+  <%= f.error_messages %>
+  <div>
+    <input id="user_session_login" name="user_session[login]" size="30" type="text" placeholder="Login" value="<%= @user_session.login -%>">
+  </div>
+  <div>
+    <input id="user_session_password" name="user_session[password]" size="30" type="password" placeholder="Password">
+  </div>
+  <div class="checkbox">
+    <%= f.check_box :remember_me %>
+    <%= f.label :remember_me %> 
+  </div>
+  <div>
+    <%= f.submit "Login" %>
+  </div>
+<% end %>
