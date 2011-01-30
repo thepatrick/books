@@ -67,6 +67,27 @@ div.field, div.actions {
   list-style: square;
 }
 
+.progress-graph {
+  height: 100px; 
+  position: relative;
+}
+
+.progress-graph .books {
+  position: absolute; 
+  bottom: 0; 
+  left: 35%; 
+  right: 50%;
+  background-color: #BEEE41;
+}
+
+.progress-graph .time {
+  position: absolute; 
+  bottom: 0; 
+  right: 35%; 
+  left: 50%;
+  background-color: #1E9AEB;
+}
+
 @media only screen and (max-width: 767px) {
   input[type=text], input[type=password] {
     width: 250px;

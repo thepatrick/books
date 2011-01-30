@@ -13,13 +13,12 @@
       <%= stylesheet_link_tag :all %>
       <%= javascript_include_tag :defaults %>
     <% else %>
-    <link href=" http://cdn.m.ac.nz/2011/yearofthebook/stylesheets/app.css?1296361286" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://cdn.m.ac.nz/2011/yearofthebook/stylesheets/app.css?1296362940" media="screen" rel="stylesheet" type="text/css" />
     <script src="http://cdn.m.ac.nz/2011/yearofthebook/javascripts/prototype.js?1296361286" type="text/javascript"></script>
     <script src="http://cdn.m.ac.nz/2011/yearofthebook/javascripts/effects.js?1296361286" type="text/javascript"></script>
     <script src="http://cdn.m.ac.nz/2011/yearofthebook/javascripts/dragdrop.js?1296361286" type="text/javascript"></script>
     <script src="http://cdn.m.ac.nz/2011/yearofthebook/javascripts/controls.js?1296361286" type="text/javascript"></script>
     <script src="http://cdn.m.ac.nz/2011/yearofthebook/javascripts/rails.js?1296361286" type="text/javascript"></script>
-    <script src="http://cdn.m.ac.nz/2011/yearofthebook/javascripts/application.js?1296361286" type="text/javascript"></script>
     <% end %>
     <%= csrf_meta_tag %>
 		
@@ -67,9 +66,9 @@
           By: 1st January 2012.<br>
           So far: <%= Book.finished.count %>.
           
-          <div style="height: 100px; position: relative;">
-            <div style="position: absolute; bottom: 0; left: 35%; right: 50%; top: <%= 100 - (Book.finished.count.to_f / 52) * 100 %>%; background-color: #BEEE41;" title="Progress (books)"></div>
-            <div style="position: absolute; bottom: 0; right: 35%; left: 50%; top: <%= ((((Date.parse('2012-01-01') - Time.now.to_date).to_f) / 365) * 100).to_i %>%; background-color: #1E9AEB;" title="Progress (time)"></div>
+          <div class="progress-graph" style="">
+            <div class="books" style="top: <%= 100 - (Book.finished.count.to_f / 52) * 100 %>%;" title="Progress (books)"></div>
+            <div class="time" style="top: <%= ((((Date.parse('2012-01-01') - Time.now.to_date).to_f) / 365) * 100).to_i %>%;" title="Progress (time)"></div>
           </div>
         </aside>
         <footer>
