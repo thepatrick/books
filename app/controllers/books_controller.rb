@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   
-  before_filter :require_user, :except => :index
+  before_filter :require_user, :except => [:index,:show]
   
   respond_to :html, :json
   respond_to :rss, :only => :index
