@@ -20,8 +20,7 @@ class BooksController < ApplicationController
   # GET /books/new
   # GET /books/new.json
   def new
-    @book = Book.new
-    respond_with(@book)
+    respond_with(@book = Book.new)
   end
 
   # GET /books/1/edit

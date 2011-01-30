@@ -22,7 +22,7 @@
     <% end %>
     <%= csrf_meta_tag %>
     
-    <% if @book %>
+    <% if @book and !@book.new_record? %>
     <link rel="canonical" href="http://books.thepatrick.com.au<%= book_path(@book) %>" />
     <% else %>
     <link rel="canonical" href="http://books.thepatrick.com.au/" />
