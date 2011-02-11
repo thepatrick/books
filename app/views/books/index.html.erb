@@ -1,12 +1,10 @@
 <% @books.each do |book| %>
       <div class="post text">
-					<a href="http://myio.com.au/post/2683504630/site-update" class="icon"></a>
 					<h2 class="title">
 					  <%= link_to book.title, book_path(book) %></h2>
           <!-- <div class="content"></div> -->
 				<p><small>
-				    By <%= book.author %>, <%= book.kind.ebook ? "on" : "in" %> <%= book.kind.title %> · 
-				    Finished <%= book.ended.strftime("%B %e, %Y") %>
+						By <%= link_to  book.author, 'http://www.amazon.com/s?tag=thepatrick-20&search-alias=stripbooks&field-author=' + CGI::escape(book.author) %>, <%= book.kind.ebook ? "on" : "in" %> <% unless book.kind.url.blank? -%><%= link_to book.kind.title, book.kind.url -%><% else -%><%= book.kind.title %><% end %> &middot; Finished <%= book.ended.strftime("%B %e, %Y") %><% unless book.amazon_url.blank? -%>&middot; <%= link_to "Get this book from Amazon", book.amazon_url %><% end -%>
 						
 						
 				</small></p>

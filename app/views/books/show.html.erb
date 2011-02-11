@@ -1,26 +1,28 @@
+<h1><%= @book.title %></h1>
+
+<p>
+  By
+  <strong><%= link_to  @book.author, 'http://www.amazon.com/s?tag=thepatrick-20&search-alias=stripbooks&field-author=' + CGI::escape(@book.author) %></strong>
+</p>
+
+<p>
+  &middot; <b>Read <%= @book.kind.ebook ? "on" : "in" %></b>
+  <% unless @book.kind.url.blank? -%><%= link_to @book.kind.title, @book.kind.url -%><% else -%><%= @book.kind.title %><% end %>
+</p>
+
+<p>
+  &middot; <b>Started</b>
+  <%= @book.started.strftime("%B %e, %Y") %>
+</p>
+
+<p>
+  &middot; <b>Finished</b>
+  <%= @book.ended.strftime("%B %e, %Y") %>
+</p>
+
+<p>
+  <% unless @book.amazon_url.blank? -%>&middot; <%= link_to "Get from Amazon", @book.amazon_url %><% end -%>
+</p>
+
+
 <p id="notice"><%= notice %></p>
-
-<p>
-  <b>Title:</b>
-  <%= @book.title %>
-</p>
-
-<p>
-  <b>Author:</b>
-  <%= @book.author %>
-</p>
-
-<p>
-  <b>Kind:</b>
-  <%= @book.kind.title %>
-</p>
-
-<p>
-  <b>Started:</b>
-  <%= @book.started %>
-</p>
-
-<p>
-  <b>Ended:</b>
-  <%= @book.ended %>
-</p>
