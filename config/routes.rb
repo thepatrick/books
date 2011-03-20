@@ -6,6 +6,7 @@ PatrickBooks::Application.routes.draw do
 
   match 'login' => "user_session#new", :as => :login
   match 'logout' => "user_session#destroy", :as => :logout
+  match 'loginWithToken' => "user_session#login_with_token", :as => :login_with_token
   
   root :to => 'books#index'
   

@@ -1,5 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  
+  def consumer
+    return nil if ENV['PATRICKID_SERVER'].nil?
+    @consumer ||= PatrickIDConsumer.new(ENV['PATRICKID_SERVER'], ENV['PATRICKID_SERVICEID'], ENV['PATRICKID_SECRET'])
+  end
+  
  
   helper_method :current_user_session, :current_user
  

@@ -87,7 +87,7 @@
         Copyright &copy; 2011 Patrick Quinn-Graham, with
         <a href="http://thepatrick.com.au/rights-reserved.html">some rights reserved</a><br>
       	<small>
-          <% unless current_user %><a href="/login">Login</a> &middot; <% end %>
+          <% unless current_user %><a href="<%= magic_login_url %>">Login</a> &middot; <% end %>
           <a href="https://github.com/thepatrick/books">Source</a>
         </small> 
       </p>
