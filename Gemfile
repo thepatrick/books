@@ -7,3 +7,5 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'authlogic'
 
 gem 'msgpack'
+
+gem 'json'
