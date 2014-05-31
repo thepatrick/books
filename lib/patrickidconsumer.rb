@@ -23,11 +23,11 @@ class PatrickIDConsumer
     puts CGI::escape(@service_id)
     puts CGI::escape(return_url)
     puts CGI::escape(cancel_url)
-    "http://#{ @auth_server }/authenticate?service=#{ CGI::escape(@service_id) }&returnURL=#{ CGI::escape(return_url) }&cancelURL=#{ CGI::escape(cancel_url) }"
+    "https://#{ @auth_server }/authenticate?service=#{ CGI::escape(@service_id) }&returnURL=#{ CGI::escape(return_url) }&cancelURL=#{ CGI::escape(cancel_url) }"
   end
   
   def retrieve_token_url(token_id)
-    "http://#{ @auth_server }/authorize/token?token=#{ CGI::escape(token_id) }&service=#{ CGI::escape(@service_id) }"
+    "https://#{ @auth_server }/authorize/token?token=#{ CGI::escape(token_id) }&service=#{ CGI::escape(@service_id) }"
   end
   
   def retrieve_details(token_id)
